@@ -1,22 +1,39 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha Jornada em TI</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minha Jornada em TI</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- ===== Header ===== -->
-    <header id="topo">
-        <h1>Minha Jornada em TI</h1>
-        <p>Transformando estudos em experiência prática</p>
-    </header>
+<!-- ===== Header ===== -->
+<header id="topo">
+  <h1>Minha Jornada em TI</h1>
+  <p>Transformando estudos em experiência prática</p>
+  <button id="toggleDark">Alternar Dark Mode</button>
+</header>
 
-    <!-- ===== Minhas Anotações ===== -->
-    <section id="notas">
-        <h2>Minhas Anotações</h2>
-        <textarea id="notaInput" placeholder="Escreva suas anotações aqui..."></textarea>
-        <button id="sa
+<!-- ===== Minhas Anotações ===== -->
+<section id="notas">
+  <h2>Minhas Anotações</h2>
+  <textarea id="notaInput" placeholder="Escreva suas anotações aqui..."></textarea>
+  <div class="notas-buttons">
+    <button id="salvarNota">Salvar Nota</button>
+    <button id="apagarTodas">Apagar Todas</button>
+  </div>
+  <div id="minhasNotas"></div>
+</section>
+
+<!-- ===== Projetos ===== -->
+<section id="projetos">
+  <h2>Projetos</h2>
+  <div class="projeto" data-index="1">
+    <h3>Projeto 1</h3>
+    <p class="detalhes">Descrição do projeto 1. Clique para expandir/fechar.</p>
+  </div>
+  <div class="projeto" data-index="2">
+    <h3>Projeto 2</h3>
+    <p class="detalhes">Descrição do projeto 2. Cliq
 

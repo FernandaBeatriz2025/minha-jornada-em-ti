@@ -1,59 +1,117 @@
-console.log("Minha Jornada em TI - Site carregado com sucesso!");
+/* ===== Geral ===== */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(120deg,#0d0d0d 0%,#1a1a1a 100%);
+  color: #ffffff;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  transition: background 0.5s, color 0.5s;
+}
+a { color: #00ffff; text-decoration: none; }
+a:hover { text-decoration: underline; }
 
-// ===== Notas de Estudos =====
-const salvarBtn = document.getElementById('salvarNota');
-const notaInput = document.getElementById('notaInput');
-const minhasNotasDiv = document.getElementById('minhasNotas');
+/* ===== Header ===== */
+header {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #0a0a0a;
+  box-shadow: 0 0 20px #00ffff;
+}
+header h1 { font-size: 3em; color:#00ffff; text-shadow:0 0 15px #00ffff; margin:0; }
+header p { font-size:1.2em; color:#a0f0f0; margin-top:10px; }
+header button {
+  margin-top:15px;
+  padding:8px 15px;
+  border:none;
+  border-radius:8px;
+  background:#00ffff;
+  color:#0d0d0d;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 0 10px #00ffff;
+}
+header button:hover { box-shadow:0 0 20px #00ffff,0 0 30px #00ffff; }
 
-function carregarNotas() {
-    minhasNotasDiv.innerHTML = '';
-    const notas = JSON.parse(localStorage.getItem('minhasNotas')) || [];
-    notas.forEach((notaObj, index) => {
-        const div = document.createElement('div');
-        div.className = 'notaItem';
+/* ===== Seções ===== */
+section {
+  max-width:900px;
+  margin:50px auto;
+  padding:20px;
+  background:#111111;
+  border-radius:15px;
+  box-shadow:0 0 15px #00ffff;
+  opacity:0;
+  transform:translateY(30px);
+  animation: fadeInUp 1s forwards;
+}
+section h2 {
+  font-size:2em;
+  color:#00ffff;
+  margin-bottom:20px;
+  border-bottom:2px solid #00ffff;
+  display:inline-block;
+  padding-bottom:5px;
+}
+@keyframes fadeInUp { to{opacity:1; transform:translateY(0);} }
 
-        const textoDiv = document.createElement('div');
-        textoDiv.className = 'notaTexto';
-        textoDiv.textContent = notaObj.texto;
+/* ===== Notas ===== */
+#notas textarea {
+  width:100%; min-height:150px; padding:15px;
+  border-radius:10px; border:2px solid #00ffff;
+  background:#1a1a1a; color:#fff; font-size:1em;
+  resize:vertical; margin-bottom:10px;
+}
+.notas-buttons { display:flex; gap:10px; margin-bottom:10px; }
+#notas button {
+  padding:10px 20px; border:none; border-radius:8px;
+  cursor:pointer; font-weight:bold;
+  box-shadow:0 0 10px #00ffff;
+  transition:0.3s all; background:#00ffff; color:#0d0d0d;
+}
+#notas button:hover { box-shadow:0 0 20px #00ffff,0 0 30px #00ffff; }
 
-        const dataSpan = document.createElement('span');
-        dataSpan.className = 'notaData';
-        dataSpan.textContent = notaObj.data;
+/* Notas individuais */
+.notaItem {
+  background:#1a1a1a;
+  padding:15px;
+  border-radius:10px;
+  margin-bottom:15px;
+  box-shadow:0 0 10px #00ffff;
+  display:flex; justify-content:space-between; align-items:center;
+  cursor:move;
+  opacity:0; transform:translateY(20px);
+  animation: fadeInUp 0.6s forwards;
+}
+.notaTexto { max-width:75%; }
+.notaData { font-size:0.8em; color:#00bfbf; margin-left:10px; }
+.apagarBtn { background:#ff4d4d; border:none; color:#0d0d0d; padding:5px 10px; border-radius:5px; font-weight:bold; cursor:pointer; transition:0.3s all; box-shadow:0 0 5px #ff4d4d; }
+.apagarBtn:hover { box-shadow:0 0 15px #ff4d4d; }
 
-        const apagarBtn = document.createElement('button');
-        apagarBtn.className = 'apagarBtn';
-        apagarBtn.textContent = 'Apagar';
-        apagarBtn.addEventListener('click', () => apagarNota(index));
+/* ===== Projetos ===== */
+.projeto { padding:10px 15px; border:1px solid #00ffff; border-radius:8px; margin-bottom:10px; cursor:pointer; transition:0.3s all; background:#111; }
+.projeto:hover { box-shadow:0 0 15px #00ffff; }
+.projeto .detalhes { display:none; color:#a0f0f0; margin-top:5px; }
 
-        div.appendChild(textoDiv);
-        div.appendChild(dataSpan);
-        div.appendChild(apagarBtn);
+/* ===== Contato ===== */
+.contact-buttons { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:20px; }
+.contact-buttons a { padding:15px 25px; border-radius:8px; font-weight:bold; box-shadow:0 0 10px #00ffff; transition:0.3s all; background:#00ffff; color:#0d0d0d; }
+.contact-buttons a:hover { box-shadow:0 0 20px #00ffff,0 0 30px #00ffff; }
 
-        minhasNotasDiv.appendChild(div);
-
-        // Animação com delay
-        div.style.animationDelay = `${index * 0.1}s`;
-    });
+/* ===== Toast ===== */
+#toast {
+  position:fixed; bottom:30px; left:50%; transform:translateX(-50%);
+  background:#00ffff; color:#0d0d0d; padding:10px 20px; border-radius:10px;
+  box-shadow:0 0 20px #00ffff; opacity:0; pointer-events:none; transition:0.5s all;
+  font-weight:bold;
 }
 
-salvarBtn.addEventListener('click', () => {
-    const texto = notaInput.value.trim();
-    if(texto === '') return;
+/* ===== Footer ===== */
+footer { text-align:center; padding:20px; margin-top:50px; border-top:2px solid #00ffff; }
 
-    const notas = JSON.parse(localStorage.getItem('minhasNotas')) || [];
-    const data = new Date().toLocaleString();
-    notas.push({ texto, data });
-    localStorage.setItem('minhasNotas', JSON.stringify(notas));
-    notaInput.value = '';
-    carregarNotas();
-});
-
-function apagarNota(index) {
-    const notas = JSON.parse(localStorage.getItem('minhasNotas')) || [];
-    notas.splice(index, 1);
-    localStorage.setItem('minhasNotas', JSON.stringify(notas));
-    carregarNotas();
+/* ===== Responsivo ===== */
+@media(max-width:600px){
+  header h1{font-size:2em;}
+  section h2{font-size:1.5em;}
 }
-
-carregarNotas();
 
