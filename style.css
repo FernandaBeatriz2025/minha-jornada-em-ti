@@ -1,121 +1,69 @@
-/* ===== Estilo geral ===== */
-body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #0d0d0d;
-    color: #ffffff;
-}
-
-a {
-    color: #00ffff;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-/* ===== Header ===== */
-header {
-    text-align: center;
-    padding: 50px 20px;
-    background: linear-gradient(90deg, #0d0d0d 0%, #0a0a0a 100%);
-    border-bottom: 2px solid #00ffff;
-}
-
-header h1 {
-    font-size: 3em;
-    color: #00ffff;
-    margin: 0;
-    text-shadow: 0 0 10px #00ffff;
-}
-
-header p {
-    font-size: 1.2em;
-    color: #a0f0f0;
-    margin-top: 10px;
-}
-
-/* ===== Seções ===== */
-section {
-    padding: 50px 20px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-section h2 {
-    font-size: 2em;
-    color: #00ffff;
-    margin-bottom: 30px;
-    border-bottom: 2px solid #00ffff;
-    display: inline-block;
-}
-
-/* ===== Meus Estudos ===== */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-}
-
-.card {
-    background-color: #1a1a1a;
-    padding: 20px;
+/* ===== Notas de Estudos ===== */
+#notas textarea {
+    width: 100%;
+    min-height: 150px;
+    padding: 15px;
     border-radius: 10px;
-    box-shadow: 0 0 10px #00ffff;
-    transition: transform 0.3s, box-shadow 0.3s;
+    border: 2px solid #00ffff;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-size: 1em;
+    resize: vertical;
+    margin-bottom: 10px;
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 20px #00ffff;
-}
-
-.card h3 {
-    margin-top: 0;
-    color: #00ffff;
-}
-
-.card p {
-    color: #b0f0f0;
-}
-
-/* ===== Contato ===== */
-.contact-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-top: 20px;
-}
-
-.contact-buttons a {
+#notas button {
     background-color: #00ffff;
     color: #0d0d0d;
-    padding: 15px 25px;
+    padding: 10px 20px;
+    border: none;
     border-radius: 8px;
+    cursor: pointer;
     font-weight: bold;
     transition: background 0.3s;
 }
 
-.contact-buttons a:hover {
+#notas button:hover {
     background-color: #00bfbf;
 }
 
-/* ===== Footer ===== */
-footer {
-    text-align: center;
-    padding: 20px;
-    border-top: 2px solid #00ffff;
-    margin-top: 50px;
+#minhasNotas {
+    margin-top: 20px;
+    padding: 10px;
 }
 
-/* ===== Responsivo ===== */
-@media (max-width: 600px) {
-    header h1 {
-        font-size: 2em;
-    }
-    section h2 {
-        font-size: 1.5em;
-    }
+.notaItem {
+    background-color: #1a1a1a;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 10px #00ffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.notaTexto {
+    max-width: 80%;
+}
+
+.notaData {
+    font-size: 0.8em;
+    color: #00bfbf;
+    margin-left: 10px;
+}
+
+.apagarBtn {
+    background-color: #ff4d4d;
+    border: none;
+    color: #0d0d0d;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.apagarBtn:hover {
+    background-color: #ff0000;
 }
