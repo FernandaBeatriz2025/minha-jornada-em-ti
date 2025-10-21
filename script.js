@@ -1,4 +1,3 @@
-// Mensagem inicial
 console.log("Minha Jornada em TI - Site carregado com sucesso!");
 
 // ===== Notas de Estudos =====
@@ -6,7 +5,6 @@ const salvarBtn = document.getElementById('salvarNota');
 const notaInput = document.getElementById('notaInput');
 const minhasNotasDiv = document.getElementById('minhasNotas');
 
-// Carregar notas salvas
 function carregarNotas() {
     minhasNotasDiv.innerHTML = '';
     const notas = JSON.parse(localStorage.getItem('minhasNotas')) || [];
@@ -32,10 +30,13 @@ function carregarNotas() {
         div.appendChild(apagarBtn);
 
         minhasNotasDiv.appendChild(div);
+
+        // Adiciona animação com delay
+        div.style.animation = `fadeInUp 0.6s ease forwards`;
+        div.style.animationDelay = `${index * 0.1}s`;
     });
 }
 
-// Salvar nova nota
 salvarBtn.addEventListener('click', () => {
     const texto = notaInput.value.trim();
     if(texto === '') return;
@@ -48,7 +49,6 @@ salvarBtn.addEventListener('click', () => {
     carregarNotas();
 });
 
-// Apagar nota
 function apagarNota(index) {
     const notas = JSON.parse(localStorage.getItem('minhasNotas')) || [];
     notas.splice(index, 1);
@@ -56,6 +56,7 @@ function apagarNota(index) {
     carregarNotas();
 }
 
-// Inicializar
 carregarNotas();
+
+
 
